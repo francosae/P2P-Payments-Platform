@@ -69,7 +69,7 @@ func main() {
 }
 
 func signInWithEmailPassword(email, password string) (string, error) {
-	apiKey := "AIzaSyApLKaQPTdsieLrLYrfc6fBMLl5EqK8HLg"
+	apiKey := ""
 	url := fmt.Sprintf("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=%s", apiKey)
 
 	requestData := map[string]string{

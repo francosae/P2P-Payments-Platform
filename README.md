@@ -77,10 +77,6 @@ For detailed instructions, please refer to the documentation.
 
 The API documentation is available using Swagger/OpenAPI. You can access it locally at `http://localhost:3000/swagger/index.html` when the API Gateway is running.
 
-## Contributing
-
-Contributions to the project are welcome. If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
-
 ## License
 
 This project is open-source and available under the [MIT License](LICENSE).

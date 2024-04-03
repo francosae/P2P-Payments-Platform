@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "API Gateway",
+            "type": "go",
+            "request": "launch",
+            "program": "${workspaceFolder}/api-gateway/cmd",
+            "cwd": "/Users/pfranco/Desktop/poolparty/services-workspace/api-gateway" // make this the root of each service root
+        },
+        {
+            "name": "Auth Service",
+            "type": "go",
+            "request": "launch",
+            "program": "${workspaceFolder}/auth-service/cmd",
+            "cwd": "/Users/pfranco/Desktop/poolparty/services-workspace/auth-service" // make this the root of each service root
+        },
+        {
+            "name": "Pool & Transactions Service",
+            "type": "go",
+            "request": "launch",
+            "program": "${workspaceFolder}/pool-transactions/cmd",
+            "cwd": "/Users/pfranco/Desktop/poolparty/services-workspace/pool-transactions" // make this the root of each service root
+        },
+        {
+            "name": "User & Compliance Service",
+            "type": "go",
+            "request": "launch",
+            "program": "${workspaceFolder}/user-compliance/cmd",
+            "cwd": "/Users/pfranco/Desktop/poolparty/services-workspace/user-compliance" // make this the root of each service root
+        }
+        
+    ],
+
+}

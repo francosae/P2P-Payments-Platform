@@ -1,0 +1,284 @@
+syntax = "proto3";
+
+package pooltransactions;
+import "google/protobuf/timestamp.proto";
+
+option go_package = "./pkg/pool-transactions/pb";
+
+service PoolTransactionsService {
+    // Pools
+    rpc CreatePool(CreatePoolRequest) returns (CreatePoolResponse) {}
+    rpc CreatePoolInvitation(CreatePoolInvitationRequest) returns (CreatePoolInvitationResponse) {}
+    rpc CreatePoolParticipant(CreatePoolParticipantRequest) returns (CreatePoolParticipantResponse) {}
+    rpc DeletePool(DeletePoolRequest) returns (DeletePoolResponse) {}
+    rpc GetUserPools(GetUserPoolsRequest) returns (GetUserPoolsResponse) {}
+    rpc GetPool(GetPoolRequest) returns (GetPoolResponse) {}
+    rpc RemovePoolParticipant(RemovePoolParticipantRequest) returns (RemovePoolParticipantResponse) {}
+    rpc UpdatePool(UpdatePoolRequest) returns (UpdatePoolResponse) {}
+    rpc GetPoolBalance(GetPoolBalanceRequest) returns (GetPoolBalanceResponse) {}
+    rpc GetPoolOverview(GetPoolOverviewRequest) returns (GetPoolOverviewResponse) {}
+
+    // Transactions
+    rpc SendPaymentToUser(SendPaymentToUserRequest) returns (SendPaymentToUserResponse) {}
+    rpc SendPaymentToPool(SendPaymentToPoolRequest) returns (SendPaymentToPoolResponse) {}
+    rpc GetUserAccountOverview(GetUserAccountOverviewRequest) returns (GetUserAccountOverviewResponse) {}
+    rpc GetUserBalance(GetUserBalanceRequest) returns (GetUserBalanceResponse) {}
+
+    rpc IsUserOwnerOfPool(IsUserOwnerOfPoolRequest) returns (IsUserOwnerOfPoolResponse) {}
+}
+
+
+// Is User Owner of Pool
+message IsUserOwnerOfPoolRequest {
+    string userId = 1;
+    string poolId = 2;
+}
+
+message IsUserOwnerOfPoolResponse {
+    bool isOwner = 1;
+    int32 status = 2;
+}
+
+
+// Create Pool Invitation
+message CreatePoolInvitationRequest {
+    string poolId = 1;
+    string userId = 2;
+    string role = 3;
+}
+
+message CreatePoolInvitationResponse {
+    string invitationId = 1;
+    string inviteeId = 2;
+    string poolId = 3;
+    int32 status = 4;
+    google.protobuf.Timestamp createdAt = 5;
+}
+
+// Create Pool Participant
+message CreatePoolParticipantRequest {
+    string poolId = 2;
+}
+
+message CreatePoolParticipantResponse {
+    string participantId = 1;
+    string poolId = 3;
+    string role = 4;
+    google.protobuf.Timestamp joinedAt = 5;
+    int32 status = 6;
+}
+
+// Delete Pool
+message DeletePoolRequest {
+    string poolId = 1;
+}
+
+message DeletePoolResponse {
+    string poolId = 1;
+    int32 status = 2;
+}
+
+
+// Get Participant Pools
+message GetUserPoolsRequest {
+    string userId = 1;
+}
+
+message Pool {
+    string poolId = 1;
+    string poolname = 2;
+    string description = 3;
+    int32 balanceGoal = 4;
+    repeated Participant participants = 5;
+    repeated Transaction transactions = 6;
+    int32 status = 7;
+    string createdAt = 8;
+}
+
+message GetUserPoolsResponse {
+    repeated Pool pools = 1;
+    int32 status = 2;
+}
+// Remove Pool Participant
+message RemovePoolParticipantRequest {
+    string poolId = 1;
+    string participantId = 2;
+}
+
+message RemovePoolParticipantResponse {
+    string participantId = 1;
+    string poolId = 2;
+    int32 status = 3;
+}
+
+// Update Pool
+message UpdatePoolRequest {
+    string poolId = 1;
+    string poolname = 2;
+    string description = 3;
+    int32 balanceGoal = 4;
+}
+
+message UpdatePoolResponse {
+    string poolname = 2;
+    string description = 3;
+    int32 balanceGoal = 4;
+    int32 status = 5;
+    string createdAt = 6;
+}
+
+// Create Pool 
+message CreatePoolRequest {
+    string poolname = 1;
+    string description = 2;
+    int32 balanceGoal = 3;
+}
+
+message CreatePoolResponse {
+    string poolId = 1;
+    string poolname = 2;
+    string description = 3;
+    int32 balanceGoal = 4;
+    int32 status = 6;
+    string createdAt = 7;
+}
+
+// Get Pool by ID
+message GetPoolRequest {
+    string poolId = 1;
+}
+
+message Participant {
+    string participantId = 1;
+    string userId = 2;
+    string poolId = 3;
+    string role = 4;
+    google.protobuf.Timestamp joinedAt = 5;
+    int32 status = 6;
+    string createdAt = 7;
+}
+
+
+message Transaction {
+    string transactionId = 1;
+    string fromAccountId = 2;
+    string toAccountId = 3;
+    float amount = 4;
+    string description = 5;
+    string status = 6;
+    google.protobuf.Timestamp createdAt = 7;
+}
+message GetPoolResponse {
+    string poolId = 1;
+    string poolname = 2;
+    string description = 3;
+    int32 balanceGoal = 4;
+    repeated Participant participants = 5;
+    repeated Transaction transactions = 6;
+    int32 status = 7;
+    string createdAt = 8;
+}
+
+// Get Pool Balance
+message GetPoolBalanceRequest {
+    string poolId = 1;
+}
+
+message GetPoolBalanceResponse {
+    float balance = 1;
+    int32 status = 2;
+}
+
+// Get User Balance
+message GetUserBalanceRequest {
+    string userId = 1;
+}
+
+message GetUserBalanceResponse {
+    float balance = 1;
+    int32 status = 2;
+}
+
+
+// Send Payment to User
+message SendPaymentToUserRequest {
+    string receiverUserId = 2;
+    float amount = 3;
+    string description = 4;
+}
+
+message SendPaymentToUserResponse {
+    float oldBalance = 1;
+    float newBalance = 2;
+    string description = 3;
+    int32 status = 4;
+}
+
+// Send Payment to Pool
+message SendPaymentToPoolRequest {
+    string poolId = 1;
+    float amount = 2;
+    string description = 3;
+}
+
+message SendPaymentToPoolResponse {
+    float oldBalance = 1;
+    float newBalance = 2;
+    string description = 3;
+    int32 status = 4;
+}
+
+// Get User Account Overview
+message GetUserAccountOverviewRequest {
+    string userId = 1;
+}
+
+message GetUserAccountOverviewResponse {
+    float balance = 1;
+    repeated GalileoTransactions transactions = 2;
+    int32 transactionCount = 3;
+    int32 status = 4;
+}
+
+
+message GalileoTransactions {
+    string pmt_ref_no = 1;
+    string act_id = 2;
+    string act_type = 3;
+    string mcc = 4;
+    string post_ts = 5;
+    string amt = 6;
+    string details = 7;
+    string description = 8;
+    string source_id = 9;
+    string bal_id = 10;
+    string prod_id = 11;
+    string auth_ts = 12;
+    string trans_code = 13;
+    string ach_transaction_id = 14;
+    string external_trans_id = 15;
+    string original_auth_id = 16;
+    string network_id = 17;
+    string local_amt = 18;
+    string local_curr_code = 19;
+    string settle_amt = 20;
+    string settle_curr_code = 21;
+    string billing_amt = 22;
+    string billing_curr_code = 23;
+    float iac_tax = 24;
+    float iva_tax = 25;
+    string funding_account_prn = 26;
+    string spending_account_prn = 27;
+}
+
+// Get Pool Overview
+message GetPoolOverviewRequest {
+    string poolId = 1;
+}
+
+message GetPoolOverviewResponse {
+    float balance = 1;
+    repeated GalileoTransactions transactions = 2;
+    int32 transactionCount = 3;
+    int32 status = 4;
+}

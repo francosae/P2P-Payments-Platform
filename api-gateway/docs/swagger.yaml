@@ -1,0 +1,1251 @@
+basePath: /
+definitions:
+  github_com_Sharefunds_api-gateway_pkg_auth_pb.LoginResponse:
+    properties:
+      error:
+        type: string
+      status:
+        type: integer
+      token:
+        type: string
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_auth_pb.RegisterResponse:
+    properties:
+      error:
+        type: string
+      status:
+        type: integer
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.CreatePoolInvitationResponse:
+    properties:
+      createdAt:
+        $ref: '#/definitions/timestamppb.Timestamp'
+      invitationId:
+        type: string
+      inviteeId:
+        type: string
+      poolId:
+        type: string
+      status:
+        type: integer
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.CreatePoolParticipantResponse:
+    properties:
+      joinedAt:
+        $ref: '#/definitions/timestamppb.Timestamp'
+      participantId:
+        type: string
+      poolId:
+        type: string
+      role:
+        type: string
+      status:
+        type: integer
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.CreatePoolResponse:
+    properties:
+      balanceGoal:
+        type: integer
+      createdAt:
+        type: string
+      description:
+        type: string
+      poolId:
+        type: string
+      poolname:
+        type: string
+      status:
+        type: integer
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.DeletePoolResponse:
+    properties:
+      poolId:
+        type: string
+      status:
+        type: integer
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.GalileoTransactions:
+    properties:
+      ach_transaction_id:
+        type: string
+      act_id:
+        type: string
+      act_type:
+        type: string
+      amt:
+        type: string
+      auth_ts:
+        type: string
+      bal_id:
+        type: string
+      billing_amt:
+        type: string
+      billing_curr_code:
+        type: string
+      description:
+        type: string
+      details:
+        type: string
+      external_trans_id:
+        type: string
+      funding_account_prn:
+        type: string
+      iac_tax:
+        type: number
+      iva_tax:
+        type: number
+      local_amt:
+        type: string
+      local_curr_code:
+        type: string
+      mcc:
+        type: string
+      network_id:
+        type: string
+      original_auth_id:
+        type: string
+      pmt_ref_no:
+        type: string
+      post_ts:
+        type: string
+      prod_id:
+        type: string
+      settle_amt:
+        type: string
+      settle_curr_code:
+        type: string
+      source_id:
+        type: string
+      spending_account_prn:
+        type: string
+      trans_code:
+        type: string
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.GetPoolBalanceResponse:
+    properties:
+      balance:
+        type: number
+      status:
+        type: integer
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.GetPoolOverviewResponse:
+    properties:
+      balance:
+        type: number
+      status:
+        type: integer
+      transactionCount:
+        type: integer
+      transactions:
+        items:
+          $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.GalileoTransactions'
+        type: array
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.GetPoolResponse:
+    properties:
+      balanceGoal:
+        type: integer
+      createdAt:
+        type: string
+      description:
+        type: string
+      participants:
+        items:
+          $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.Participant'
+        type: array
+      poolId:
+        type: string
+      poolname:
+        type: string
+      status:
+        type: integer
+      transactions:
+        items:
+          $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.Transaction'
+        type: array
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.GetUserAccountOverviewResponse:
+    properties:
+      balance:
+        type: number
+      status:
+        type: integer
+      transactionCount:
+        type: integer
+      transactions:
+        items:
+          $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.GalileoTransactions'
+        type: array
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.GetUserBalanceResponse:
+    properties:
+      balance:
+        type: number
+      status:
+        type: integer
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.GetUserPoolsResponse:
+    properties:
+      pools:
+        items:
+          $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.Pool'
+        type: array
+      status:
+        type: integer
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.Participant:
+    properties:
+      createdAt:
+        type: string
+      joinedAt:
+        $ref: '#/definitions/timestamppb.Timestamp'
+      participantId:
+        type: string
+      poolId:
+        type: string
+      role:
+        type: string
+      status:
+        type: integer
+      userId:
+        type: string
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.Pool:
+    properties:
+      balanceGoal:
+        type: integer
+      createdAt:
+        type: string
+      description:
+        type: string
+      participants:
+        items:
+          $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.Participant'
+        type: array
+      poolId:
+        type: string
+      poolname:
+        type: string
+      status:
+        type: integer
+      transactions:
+        items:
+          $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.Transaction'
+        type: array
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.RemovePoolParticipantResponse:
+    properties:
+      participantId:
+        type: string
+      poolId:
+        type: string
+      status:
+        type: integer
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.SendPaymentToUserResponse:
+    properties:
+      description:
+        type: string
+      newBalance:
+        type: number
+      oldBalance:
+        type: number
+      status:
+        type: integer
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.Transaction:
+    properties:
+      amount:
+        type: number
+      createdAt:
+        $ref: '#/definitions/timestamppb.Timestamp'
+      description:
+        type: string
+      fromAccountId:
+        type: string
+      status:
+        type: string
+      toAccountId:
+        type: string
+      transactionId:
+        type: string
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.UpdatePoolResponse:
+    properties:
+      balanceGoal:
+        type: integer
+      createdAt:
+        type: string
+      description:
+        type: string
+      poolname:
+        type: string
+      status:
+        type: integer
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.Account:
+    properties:
+      id:
+        type: string
+      mask:
+        type: string
+      name:
+        type: string
+      subtype:
+        type: string
+      type:
+        type: string
+      verification_status:
+        type: string
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.Address:
+    properties:
+      address1:
+        type: string
+      address2:
+        type: string
+      city:
+        type: string
+      countryCode:
+        type: string
+      postalCode:
+        type: string
+      state:
+        type: string
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.CreatePlaidAccessTokenResponse:
+    properties:
+      accessToken:
+        type: string
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.CreatePlaidIDVTokenResponse:
+    properties:
+      idvToken:
+        type: string
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.CreatePlaidLinkTokenResponse:
+    properties:
+      linkToken:
+        type: string
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.CreateUserAccountResponse:
+    properties:
+      error:
+        type: string
+      galileoAccountDetails:
+        $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.GalileoAccountDetails'
+      galileoAccountStatus:
+        type: string
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.CreateUserRecordResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.GalileoAccountDetails:
+    properties:
+      cardId:
+        type: string
+      cardNumber:
+        type: string
+      cardSecurityCode:
+        type: string
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.GalileoAccountInfo:
+    properties:
+      address:
+        $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.Address'
+      message:
+        type: string
+      personalInfo:
+        $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.PersonalInfo'
+      status:
+        type: string
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.GetAccountStatusResponse:
+    properties:
+      GalileoAccountCreated:
+        type: boolean
+      isVerified:
+        type: boolean
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.GetUserAccountResponse:
+    properties:
+      address:
+        $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.Address'
+      personalInfo:
+        $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.PersonalInfo'
+      userId:
+        type: string
+      username:
+        type: string
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.Institution:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.PersonalInfo:
+    properties:
+      dateOfBirth:
+        $ref: '#/definitions/timestamppb.Timestamp'
+      email:
+        type: string
+      firstName:
+        type: string
+      id:
+        type: string
+      idType:
+        type: integer
+      lastName:
+        type: string
+      phoneNumber:
+        type: string
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.PlaidMetadata:
+    properties:
+      accounts:
+        items:
+          $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.Account'
+        type: array
+      institution:
+        $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.Institution'
+      link_session_id:
+        type: string
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.SetIdentityVerifiedResponse:
+    properties:
+      isVerified:
+        type: boolean
+    type: object
+  github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.UpdateUserAccountResponse:
+    properties:
+      error:
+        type: string
+      galileoAccountInfo:
+        $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.GalileoAccountInfo'
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
+  pkg_auth_routes.LoginRequestBody:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  pkg_auth_routes.RegisterRequestBody:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  pkg_pool-transactions_routes.CreateP2PPaymentRequestBody:
+    properties:
+      Amount:
+        type: number
+      Description:
+        type: string
+    type: object
+  pkg_pool-transactions_routes.CreateP2PPoolPaymentRequestBody:
+    properties:
+      Amount:
+        type: number
+      Description:
+        type: string
+    type: object
+  pkg_pool-transactions_routes.CreatePoolInvitationRequestBody:
+    properties:
+      UserId:
+        type: string
+    type: object
+  pkg_pool-transactions_routes.CreatePoolRequestBody:
+    properties:
+      Pool:
+        $ref: '#/definitions/pkg_pool-transactions_routes.Pool'
+    type: object
+  pkg_pool-transactions_routes.Pool:
+    properties:
+      balanceGoal:
+        type: integer
+      description:
+        type: string
+      poolName:
+        type: string
+    type: object
+  pkg_pool-transactions_routes.RemovePoolParticipantRequestBody:
+    properties:
+      UserId:
+        type: string
+    type: object
+  pkg_pool-transactions_routes.UpdatePoolRequestBody:
+    properties:
+      Pool:
+        $ref: '#/definitions/pkg_pool-transactions_routes.Pool'
+    type: object
+  pkg_user-compliance_routes.Address:
+    properties:
+      address1:
+        type: string
+      address2:
+        type: string
+      city:
+        type: string
+      countryCode:
+        type: string
+      postalCode:
+        type: string
+      state:
+        type: string
+    type: object
+  pkg_user-compliance_routes.CreateAccessTokenRequestBody:
+    properties:
+      metadata:
+        $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.PlaidMetadata'
+      publicToken:
+        type: string
+    type: object
+  pkg_user-compliance_routes.CreateUserAccountRequestBody:
+    properties:
+      address:
+        $ref: '#/definitions/pkg_user-compliance_routes.Address'
+      personalInfo:
+        $ref: '#/definitions/pkg_user-compliance_routes.PersonalInfo'
+      username:
+        type: string
+    type: object
+  pkg_user-compliance_routes.PersonalInfo:
+    properties:
+      dateOfBirth:
+        type: string
+      email:
+        type: string
+      firstName:
+        type: string
+      id:
+        type: string
+      idType:
+        type: integer
+      lastName:
+        type: string
+      phoneNumber:
+        type: string
+    type: object
+  pkg_user-compliance_routes.SetIdentityStatusRequestBody:
+    properties:
+      link_session_id:
+        type: string
+    type: object
+  pkg_user-compliance_routes.UpdateUserAccountRequestBody:
+    properties:
+      address:
+        $ref: '#/definitions/pkg_user-compliance_routes.Address'
+      personalInfo:
+        $ref: '#/definitions/pkg_user-compliance_routes.PersonalInfo'
+      username:
+        type: string
+    type: object
+  timestamppb.Timestamp:
+    properties:
+      nanos:
+        description: |-
+          Non-negative fractions of a second at nanosecond resolution. Negative
+          second values with fractions must still have non-negative nanos values
+          that count forward in time. Must be from 0 to 999,999,999
+          inclusive.
+        type: integer
+      seconds:
+        description: |-
+          Represents seconds of UTC time since Unix epoch
+          1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to
+          9999-12-31T23:59:59Z inclusive.
+        type: integer
+    type: object
+host: localhost:3000
+info:
+  contact: {}
+  description: This is the client facing API for Sharefunds/Quilt/PoolParty
+  title: Sharefunds Client Facing API
+  version: 1.0.1
+paths:
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Login a user, validates client token with firebase and returns
+        the client token
+      parameters:
+      - description: User to login
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/pkg_auth_routes.LoginRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_auth_pb.LoginResponse'
+      summary: Login a user
+      tags:
+      - Authentication Service
+  /auth/register:
+    post:
+      consumes:
+      - application/json
+      description: Register a new user, creates an account in Firebase and a user
+        in the database
+      parameters:
+      - description: User to register
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/pkg_auth_routes.RegisterRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_auth_pb.RegisterResponse'
+      summary: Register a new user
+      tags:
+      - Authentication Service
+  /pool-transactions/pools/{PoolID}:
+    delete:
+      consumes:
+      - application/json
+      description: Sets Pool status to Inactive, Deactivates secondary account in
+        galileo.
+      operationId: delete_pool
+      parameters:
+      - description: Pool ID
+        in: path
+        name: PoolID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.DeletePoolResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete Pool, deletes account in galileo.
+      tags:
+      - Pool & Transactions Service - Pools
+    get:
+      consumes:
+      - application/json
+      description: Fetches pool data, using the poolId, user must be a participant
+        in the pool.
+      operationId: get_pool_data
+      parameters:
+      - description: Pool ID
+        in: path
+        name: PoolID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.GetPoolResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Fetch pool data, including participants and transactions.
+      tags:
+      - Pool & Transactions Service - Pools
+    put:
+      consumes:
+      - application/json
+      description: Updates pool information(name and/or description and/or goal).
+      operationId: update_pool
+      parameters:
+      - description: Pool ID
+        in: path
+        name: PoolID
+        required: true
+        type: string
+      - description: Pool to update
+        in: body
+        name: Pool
+        required: true
+        schema:
+          $ref: '#/definitions/pkg_pool-transactions_routes.UpdatePoolRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.UpdatePoolResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Updates pool information.
+      tags:
+      - Pool & Transactions Service - Pools
+  /pool-transactions/pools/{PoolID}/accept-invite:
+    post:
+      consumes:
+      - application/json
+      description: Accepts pool invitation, using the poolId.
+      operationId: create_pool_participant
+      parameters:
+      - description: Pool ID
+        in: path
+        name: PoolID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.CreatePoolParticipantResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Creates ( accepts ) a pool participant , from an invitation.
+      tags:
+      - Pool & Transactions Service - Pools
+  /pool-transactions/pools/{PoolID}/create-invite:
+    post:
+      consumes:
+      - application/json
+      description: Creates a pool invitation for a user.
+      operationId: create_pool_invitation
+      parameters:
+      - description: User ID to invite
+        in: body
+        name: Pool
+        required: true
+        schema:
+          $ref: '#/definitions/pkg_pool-transactions_routes.CreatePoolInvitationRequestBody'
+      - description: Pool ID
+        in: path
+        name: PoolID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.CreatePoolInvitationResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Create Pool Invitation, creates a pool invitation for a user.
+      tags:
+      - Pool & Transactions Service - Pools
+  /pool-transactions/pools/{PoolID}/remove-participant:
+    put:
+      consumes:
+      - application/json
+      description: Removes a participant from a pool, using the poolId and participantId,
+        user must be the owner of the pool.
+      operationId: remove_pool_participant
+      parameters:
+      - description: User ID to remove from pool
+        in: body
+        name: Pool
+        required: true
+        schema:
+          $ref: '#/definitions/pkg_pool-transactions_routes.RemovePoolParticipantRequestBody'
+      - description: Pool ID
+        in: path
+        name: PoolID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.RemovePoolParticipantResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Remove a participant from a pool.
+      tags:
+      - Pool & Transactions Service - Pools
+  /pool-transactions/pools/balance/{PoolID}:
+    get:
+      consumes:
+      - application/json
+      description: Fetches the balance of a pool, using the poolId.
+      operationId: get_pool_balance
+      parameters:
+      - description: Pool ID
+        in: path
+        name: PoolID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.GetPoolBalanceResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get pool balance.
+      tags:
+      - Pool & Transactions Service - Pools
+  /pool-transactions/pools/create:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new pool in the database, and creates a new account in
+        Galileo for the pool, and adds the user as a participant in the pool.
+      operationId: create_pool
+      parameters:
+      - description: Pool to create
+        in: body
+        name: Pool
+        required: true
+        schema:
+          $ref: '#/definitions/pkg_pool-transactions_routes.CreatePoolRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.CreatePoolResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new pool
+      tags:
+      - Pool & Transactions Service - Pools
+  /pool-transactions/pools/list:
+    get:
+      consumes:
+      - application/json
+      description: Fetches all pools for a user.
+      operationId: get_user_pools
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.GetUserPoolsResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Fetch all pools for a user.
+      tags:
+      - Pool & Transactions Service
+  /pool-transactions/pools/overview/{PoolID}:
+    get:
+      consumes:
+      - application/json
+      description: Fetches the overview of a pool, including pool's balance, transactions,
+        and transaction count.
+      operationId: get_pool_overview
+      parameters:
+      - description: Pool ID
+        in: path
+        name: PoolID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.GetPoolOverviewResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Pool Overview.
+      tags:
+      - Pool & Transactions Service - Pools
+  /pool-transactions/users/balance/{UserID}:
+    get:
+      consumes:
+      - application/json
+      description: Fetches the balance of a user, using the userId.
+      operationId: get_user_balance
+      parameters:
+      - description: User ID
+        in: path
+        name: UserID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.GetUserBalanceResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get's user balance.
+      tags:
+      - Pool & Transactions Service
+  /pool-transactions/users/overview/{UserID}:
+    get:
+      consumes:
+      - application/json
+      description: Fetches the overview of a user's account, including user's balance,
+        transactions, and transaction count.
+      operationId: get_user_account_overview
+      parameters:
+      - description: User ID
+        in: path
+        name: UserID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.GetUserAccountOverviewResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get User Account Overview.
+      tags:
+      - Pool & Transactions Service
+  /pool-transactions/users/send-p2p-payment/{ReceiverID}:
+    post:
+      consumes:
+      - application/json
+      description: Sends a P2P payment from one user to another, an internal account
+        transfer via Galileo.
+      operationId: create_p2p_payment
+      parameters:
+      - description: Payment information
+        in: body
+        name: PaymentInfo
+        required: true
+        schema:
+          $ref: '#/definitions/pkg_pool-transactions_routes.CreateP2PPaymentRequestBody'
+      - description: Receiver ID for payment
+        in: path
+        name: ReceiverID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.SendPaymentToUserResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Create P2P Payment.
+      tags:
+      - Pool & Transactions Service
+  /pool-transactions/users/send-p2p-pool-payment/{PoolID}:
+    post:
+      consumes:
+      - application/json
+      description: Sends a P2P payment from one user to a pool, an internal account
+        transfer via Galileo.
+      operationId: create_p2p_pool_payment
+      parameters:
+      - description: Payment information
+        in: body
+        name: PaymentInfo
+        required: true
+        schema:
+          $ref: '#/definitions/pkg_pool-transactions_routes.CreateP2PPoolPaymentRequestBody'
+      - description: Pool ID for payment
+        in: path
+        name: PoolID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_pool-transactions_pb.SendPaymentToUserResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Create P2P Payment to a pool.
+      tags:
+      - Pool & Transactions Service
+  /user-compliance/plaid/create-accesstoken/{UID}:
+    post:
+      consumes:
+      - application/json
+      description: Exchanges the public token for an access token.
+      operationId: create_access_token
+      parameters:
+      - description: User ID
+        in: path
+        name: UID
+        required: true
+        type: string
+      - description: Public Token to exchange for access token
+        in: body
+        name: PublicToken
+        required: true
+        schema:
+          $ref: '#/definitions/pkg_user-compliance_routes.CreateAccessTokenRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.CreatePlaidAccessTokenResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Creates an access token from the Plaid API.
+      tags:
+      - User & Compliance Service - Plaid
+  /user-compliance/plaid/create-idvtoken/{UID}:
+    post:
+      consumes:
+      - application/json
+      description: Creates a link token for the Identity Verification flow, which
+        allows the user to verify their identity.
+      operationId: create_IDV_token
+      parameters:
+      - description: User ID
+        in: path
+        name: UID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.CreatePlaidIDVTokenResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Creates an Identity Verification Link Token from the Plaid API.
+      tags:
+      - User & Compliance Service - Plaid
+  /user-compliance/plaid/create-linktoken/{UID}:
+    post:
+      consumes:
+      - application/json
+      description: Creates a link token from the Plaid API.
+      operationId: create_link_token
+      parameters:
+      - description: User ID
+        in: path
+        name: UID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.CreatePlaidLinkTokenResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Creates a link token from the Plaid API.
+      tags:
+      - User & Compliance Service - Plaid
+  /user-compliance/users/create-account/{UID}:
+    post:
+      consumes:
+      - application/json
+      description: Creates a user's Galileo account, and account record within our
+        user-compliance service DB with provided info, returns the Galileo account
+        info (Create a new card program) and status.
+      operationId: create_user_account
+      parameters:
+      - description: User ID
+        in: path
+        name: UID
+        required: true
+        type: string
+      - description: Request Body to create user account
+        in: body
+        name: AccountInfo
+        required: true
+        schema:
+          $ref: '#/definitions/pkg_user-compliance_routes.CreateUserAccountRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.CreateUserAccountResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a user's digital wallet (galileo) account, and a record of the
+        users info on the user-compliance service DB.
+      tags:
+      - User & Compliance Service
+  /user-compliance/users/create-user-record/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Creates a user record on the user-compliance service DB.
+      operationId: create_user_record
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.CreateUserRecordResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Creates a user record on the user-compliance service DB.
+      tags:
+      - User & Compliance Service
+  /user-compliance/users/get-account-status/{UID}:
+    get:
+      consumes:
+      - application/json
+      description: Gets a boolean value indicating whether the user has completed
+        the identity verification flow, and galileo account creation.
+      operationId: get_account_status
+      parameters:
+      - description: User ID
+        in: path
+        name: UID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.GetAccountStatusResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Gets a user's account status, which is stored on the user-compliance
+        service DB.
+      tags:
+      - User & Compliance Service
+  /user-compliance/users/get-account/{UID}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a user's account info stored on the user-compliance service
+        DB. Does not make request to Galileo for user account info.
+      operationId: get_user_account
+      parameters:
+      - description: User ID
+        in: path
+        name: UID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.GetUserAccountResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Retrieve a user's account info stored on the user-compliance service
+        DB.
+      tags:
+      - User & Compliance Service
+  /user-compliance/users/set-verification-status/{UID}:
+    post:
+      consumes:
+      - application/json
+      description: Sets a boolean value indicating whether the user has completed
+        the identity verification flow.
+      operationId: set_identity_status
+      parameters:
+      - description: User ID
+        in: path
+        name: UID
+        required: true
+        type: string
+      - description: Session ID of the link token
+        in: body
+        name: LinkSessionId
+        required: true
+        schema:
+          $ref: '#/definitions/pkg_user-compliance_routes.SetIdentityStatusRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.SetIdentityVerifiedResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Sets a user's identity status, which is stored on the user-compliance
+        service DB.
+      tags:
+      - User & Compliance Service
+  /user-compliance/users/update-account/{UID}:
+    put:
+      consumes:
+      - application/json
+      description: Updates a user's account info on the user-compliance service DB
+        with provided info, currently does not support updating ID or IDType. Does
+        not update galileo account.
+      operationId: update_user_account
+      parameters:
+      - description: User ID
+        in: path
+        name: UID
+        required: true
+        type: string
+      - description: Info to update user's account
+        in: body
+        name: AccountInfo
+        required: true
+        schema:
+          $ref: '#/definitions/pkg_user-compliance_routes.UpdateUserAccountRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Sharefunds_api-gateway_pkg_user-compliance_pb.UpdateUserAccountResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a user's account info on the user-compliance service DB and
+        the corresponding user account with Galileo.
+      tags:
+      - User & Compliance Service
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

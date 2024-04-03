@@ -1,0 +1,178 @@
+syntax = "proto3";
+
+package usercompliance;
+
+option go_package = "./pkg/user-compliance/pb";
+
+import "google/protobuf/timestamp.proto";
+
+service UserComplianceService {
+    rpc UpdateUserAccount(UpdateUserAccountRequest) returns (UpdateUserAccountResponse) {}
+    rpc GetUserAccount(GetUserAccountRequest) returns (GetUserAccountResponse) {}
+    rpc CreateUserAccount(CreateUserAccountRequest) returns (CreateUserAccountResponse) {}
+    rpc GetUserPRN(GetUserPRNRequest) returns (GetUserPRNResponse) {}
+
+    rpc CreateUserRecord(CreateUserRecordRequest) returns (CreateUserRecordResponse) {}
+    rpc GetAccountStatus(GetAccountStatusRequest) returns (GetAccountStatusResponse) {}
+    rpc SetIdentityVerified(SetIdentityVerifiedRequest) returns (SetIdentityVerifiedResponse) {}
+
+    rpc CreatePlaidLinkToken(CreatePlaidLinkTokenRequest) returns (CreatePlaidLinkTokenResponse) {}
+    rpc CreatePlaidAccessToken(CreatePlaidAccessTokenRequest) returns (CreatePlaidAccessTokenResponse) {}
+    rpc CreatePlaidIDVToken(CreatePlaidIDVTokenRequest) returns (CreatePlaidIDVTokenResponse) {}
+}
+
+
+// CreateUserRecord
+message CreateUserRecordRequest {
+}
+
+message CreateUserRecordResponse {
+    string message = 1;
+}
+
+// SetIdentityVerified
+message SetIdentityVerifiedRequest {
+    string linkSessionId = 1;
+}
+
+message SetIdentityVerifiedResponse {
+    bool isVerified = 1;
+}
+
+// IsIdentityVerified
+message GetAccountStatusRequest {
+}
+
+message GetAccountStatusResponse {
+    bool isVerified = 1;
+    bool GalileoAccountCreated = 2;
+}
+
+// GetUserPRN
+message GetUserPRNRequest {
+    string userId = 1;
+}
+
+message GetUserPRNResponse {
+    string prn = 1;
+}
+
+// UpdateUserAccount
+message UpdateUserAccountRequest {
+    string username = 1;
+    PersonalInfo personalInfo = 2;
+    Address address = 3;
+}
+
+message UpdateUserAccountResponse {
+    int64 status = 1;
+    string error = 2;
+    string message = 3;
+    GalileoAccountInfo galileoAccountInfo = 4;
+}
+
+// GetUserProfile
+message GetUserAccountRequest {
+    // userId is not required, since we can get the userId from the JWT token
+}
+
+message GetUserAccountResponse {
+    string userId = 1;
+    string username = 2;
+    PersonalInfo personalInfo = 3;
+    Address address = 4;
+}
+
+// CreateUserAccount
+message CreateUserAccountRequest {
+    string username = 1;
+}
+
+message CreateUserAccountResponse {
+    int64 status = 1;
+    string error = 2;
+    string message = 3;
+    string galileoAccountStatus = 4;
+    GalileoAccountDetails galileoAccountDetails = 5;
+}
+
+// Supporting message types
+message Address {
+    string address1 = 1;
+    string address2 = 2;
+    string city = 3;
+    string state = 4;
+    string postalCode = 5;
+    string countryCode = 6;
+}
+
+message PersonalInfo {
+    string firstName = 1;
+    string lastName = 2;
+    string phoneNumber = 3;
+    string email = 4;
+    google.protobuf.Timestamp dateOfBirth = 5;
+    string id = 6; 
+    int32 idType = 7; 
+}
+
+message GalileoAccountDetails {
+    string cardId = 1;
+    string cardNumber = 2;
+    string cardSecurityCode = 3;
+}
+
+message GalileoAccountInfo {
+    string status = 1;
+    string message = 2;
+    PersonalInfo personalInfo = 3;
+    Address address = 4;
+}
+
+// Plaid
+
+// CreatePlaidLinkToken
+message CreatePlaidLinkTokenRequest {
+}
+
+message CreatePlaidLinkTokenResponse {
+    string linkToken = 1;
+}
+
+message Institution {
+    string id = 1;
+    string name = 2;
+}
+
+message Account {
+    string id = 1;
+    string name = 2;
+    string mask = 3;
+    string subtype = 4;
+    string type = 5;
+    string verification_status = 6; 
+}
+
+message PlaidMetadata {
+    Institution institution = 1;
+    repeated Account accounts = 2;
+    string link_session_id = 3;
+}
+
+// CreatePlaidAccessToken
+message CreatePlaidAccessTokenRequest {
+    string publicToken = 1;
+    PlaidMetadata metadata = 2;
+}
+
+message CreatePlaidAccessTokenResponse {
+    string accessToken = 1;
+}
+
+// CreatePlaidIDVToken
+message CreatePlaidIDVTokenRequest {
+}
+
+message CreatePlaidIDVTokenResponse {
+    string idvToken = 1;
+}
